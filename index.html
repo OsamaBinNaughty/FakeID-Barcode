@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>DL Barcode</title>
+	       
+	<script src="bcmath-min.js" type="text/javascript"></script>
+    <script src="pdf417-min.js" type="text/javascript"></script>	    
+
+    <script>  
+		
+		function go() { 
+			
+            var hub3_code = "@\n" +
+				"\n" +
+				"ANSI 6360050101DL00300201DL\n" + 
+				"DAQ" + document.getElementsByName("DL")[0].value + "\n" +
+				"DAA" + document.getElementsByName("last")[0].value.toUpperCase() + "," + document.getElementsByName("first")[0].value.toUpperCase() + "," + document.getElementsByName("middle")[0].value.toUpperCase() + ",\n" +
+				"DAG" + document.getElementsByName("address")[0].value.toUpperCase() + "\n" +
+				"DAI" + document.getElementsByName("city")[0].value.toUpperCase() + "\n" +
+				"DAJ" + document.getElementsByName("state")[0].value.toUpperCase() + "\n" +
+				"DAK" + document.getElementsByName("zip")[0].value.toUpperCase() + "\n" +
+				"DAR" + document.getElementsByName("class")[0].value.toUpperCase() + "\n" +
+				"DAS" + document.getElementsByName("RC")[0].value.toUpperCase() + "\n" +
+				"DAT" + document.getElementsByName("EC")[0].value.toUpperCase() + "\n" +
+				"DAU" + document.getElementsByName("HFT")[0].value + toD(document.getElementsByName("HIN")[0].value) + "\n" +
+				"DAW" + document.getElementsByName("weight")[0].value.toUpperCase() + "\n" +
+				"DAY" + document.getElementsByName("eye")[0].value.toUpperCase() + "\n" +
+				"DAZ" + document.getElementsByName("hair")[0].value.toUpperCase() + "\n" +
+				"DBA" + (parseInt(document.getElementsByName("yeari")[0].value) + 10).toString() + toD(document.getElementsByName("monthb")[0].value) + toD(document.getElementsByName("dayb")[0].value) + "\n" +
+				"DBB" + document.getElementsByName("yearb")[0].value + toD(document.getElementsByName("monthb")[0].value) + toD(document.getElementsByName("dayb")[0].value) + "\n" +
+				"DBC" + document.getElementsByName("gender")[0].value + "\n" +
+				"DBD" + document.getElementsByName("yeari")[0].value + toD(document.getElementsByName("monthi")[0].value) + toD(document.getElementsByName("dayi")[0].value) + "\n" +
+				"DBG" + document.getElementsByName("internal")[0].value + "\n" +
+				"DBH" + document.getElementsByName("organ")[0].value + "\n";
+
+        	PDF417.init(hub3_code);           	
+
+            var barcode = PDF417.getBarcodeArray();
+
+            var bw = 6;
+            var bh = 3;
+
+            var canvas = document.createElement('canvas');
+            canvas.width = bw * barcode['num_cols'];
+            canvas.height = bh * barcode['num_rows'];
+            document.getElementById('barcode').appendChild(canvas);
+
+            var ctx = canvas.getContext('2d');                    
+
+            // print barcode elements
+            var y = 0;
+            // for each row
+            for (var r = 0; r < barcode['num_rows']; ++r) {
+                var x = 0;
+                // for each column
+                for (var c = 0; c < barcode['num_cols']; ++c) {
+                    if (barcode['bcode'][r][c] == 1) {                        
+                        ctx.fillRect(x, y, bw, bh);
+                    }
+                    x += bw;
+                }
+                y += bh;
+            }            
+        }
+		
+		function toD(myNumber) {
+			return ("0" + myNumber).slice(-2);
+		}
+    
+    </script>
+
+</head>
+<body>
+<h1>OsamaBinNaughty's Magic ID Generator:</h1>
+<div id="barcode"></div>
+<h2>Please check selling and ensure your information is correct!</h2>
+<h2>If you do not understand a field, such as Driving Class or Restriction Code, you should leave it blank/default.</h2><br />
+<button type="submit" onclick="go();">Generate</button><br /><br />
+DL Number: <input name="DL" value="102245737"></input><br /><br />
+First Name: <input name="first" value="Osama"></input><br /><br />
+Middle Name: <input name="middle" value="Bin"></input><br /><br />
+Last Name: <input name="last" value="Naughty"></input><br /><br />
+Address: <input name="address" value="101 Liquor LN"></input><br /><br />
+City: <input name="city" value="Columbia"></input><br /><br />
+State Code: <input name="state" value="SC"></input><br /><br />
+Full Zipcode: <input name="zip" value="290721818"></input><br /><br />
+Driving Class: <input name="class" value="D"></input><br /><br />
+Restriction Codes: <input name="RC"></input><br /><br />
+Endorsement Codes: <input name="EC"></input><br /><br />
+Height (Ft.): <input type="number" name="HFT" min="4" max="7" value="5"></input><br /><br />
+Height (In.): <input type="number" name="HIN" min="0" max="11" value="10"></input><br /><br />
+Weight (lb.): <input type="number" name="weight" min="100" max="500" value="160"></input><br /><br />
+Year (Birth): <input type="number" name="yearb" min="1900" max="2100" value="1994"></input><br /><br />
+Month (Birth): <input type="number" name="monthb" min="1" max="12" value="01"></input><br /><br />
+Day (Birth): <input type="number" name="dayb" min="1" max="31" value="01"></input><br /><br />
+Year (Issued): <input type="number" name="yeari" min="1900" max="2100" value="2014"></input><br /><br />
+Month (Issued): <input type="number" name="monthi" min="1" max="12" value="01"></input><br /><br />
+Day (Issued): <input type="number" name="dayi" min="1" max="31" value="01"></input><br /><br />
+Gender: <select name="gender"><option value="1">M</option><option value="2">F</option></select><br /><br />
+Internal Indicator: <select name="internal"><option value="2">2</option><option value="1">1</option></select> (unused in some states)<br /><br />
+Organ Donor: <select name="organ"><option value="2">No</option><option value="1">Yes</option></select><br /><br />
+Eye Color Code: <input name="eye"></input> (unused in some states)<br /><br />
+Hair Color Code: <input name="hair"></input> (unused in some states)<br /><br />
+
+<button type="submit" onclick="go();">Generate</button>
+
+</body>
+
+</html>
