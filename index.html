@@ -12,29 +12,8 @@
     <script>  
 		
 		function go() { 
-			
-            var hub3_code = "@\n" +
-				"\n" +
-				"ANSI 6360050101DL00300201DL\n" + 
-				"DAQ" + document.getElementsByName("DL")[0].value + "\n" +
-				"DAA" + document.getElementsByName("last")[0].value.toUpperCase() + "," + document.getElementsByName("first")[0].value.toUpperCase() + "," + document.getElementsByName("middle")[0].value.toUpperCase() + ",\n" +
-				"DAG" + document.getElementsByName("address")[0].value.toUpperCase() + "\n" +
-				"DAI" + document.getElementsByName("city")[0].value.toUpperCase() + "\n" +
-				"DAJ" + document.getElementsByName("state")[0].value.toUpperCase() + "\n" +
-				"DAK" + document.getElementsByName("zip")[0].value.toUpperCase() + "\n" +
-				"DAR" + document.getElementsByName("class")[0].value.toUpperCase() + "\n" +
-				"DAS" + document.getElementsByName("RC")[0].value.toUpperCase() + "\n" +
-				"DAT" + document.getElementsByName("EC")[0].value.toUpperCase() + "\n" +
-				"DAU" + document.getElementsByName("HFT")[0].value + toD(document.getElementsByName("HIN")[0].value) + "\n" +
-				"DAW" + document.getElementsByName("weight")[0].value.toUpperCase() + "\n" +
-				"DAY" + document.getElementsByName("eye")[0].value.toUpperCase() + "\n" +
-				"DAZ" + document.getElementsByName("hair")[0].value.toUpperCase() + "\n" +
-				"DBA" + (parseInt(document.getElementsByName("yeari")[0].value) + 10).toString() + toD(document.getElementsByName("monthb")[0].value) + toD(document.getElementsByName("dayb")[0].value) + "\n" +
-				"DBB" + document.getElementsByName("yearb")[0].value + toD(document.getElementsByName("monthb")[0].value) + toD(document.getElementsByName("dayb")[0].value) + "\n" +
-				"DBC" + document.getElementsByName("gender")[0].value + "\n" +
-				"DBD" + document.getElementsByName("yeari")[0].value + toD(document.getElementsByName("monthi")[0].value) + toD(document.getElementsByName("dayi")[0].value) + "\n" +
-				"DBG" + document.getElementsByName("internal")[0].value + "\n" +
-				"DBH" + document.getElementsByName("organ")[0].value + "\n";
+			var hub3_code = "@\x0A\x1C\x0DANSI 6360050101DL00300203DLDAQ" + document.getElementsByName("DL")[0].value + "\x0A" + document.getElementsByName("last")[0].value.toUpperCase() + "," + document.getElementsByName("first")[0].value.toUpperCase() + "," + document.getElementsByName("middle")[0].value.toUpperCase() + ",\x0ADAG" + document.getElementsByName("address")[0].value.toUpperCase() + "\x0ADAI" + document.getElementsByName("city")[0].value.toUpperCase() + "\x0ADAJ" + document.getElementsByName("state")[0].value.toUpperCase() + "\x0ADAK" + document.getElementsByName("zip")[0].value.toUpperCase() + "  \x0ADAR" + document.getElementsByName("class")[0].value.toUpperCase() + "   \x0ADAS" + document.getElementsByName("RC")[0].value.toUpperCase() + "          \x0ADAT" + document.getElementsByName("EC")[0].value.toUpperCase() + "     \x0ADAU" + document.getElementsByName("HFT")[0].value + toD(document.getElementsByName("HIN")[0].value) + "\x0ADAW" + document.getElementsByName("weight")[0].value.toUpperCase() + "\x0ADAY" + document.getElementsByName("eye")[0].value.toUpperCase() + "   \x0ADAZ" + document.getElementsByName("hair")[0].value.toUpperCase() + "   \x0ADBA" + (parseInt(document.getElementsByName("yeari")[0].value) + 10).toString() + toD(document.getElementsByName("monthb")[0].value) + toD(document.getElementsByName("dayb")[0].value) + "\x0ADBB" + document.getElementsByName("yearb")[0].value + toD(document.getElementsByName("monthb")[0].value) + toD(document.getElementsByName("dayb")[0].value) + "\x0ADBC" + document.getElementsByName("gender")[0].value + "\x0ADBD" + document.getElementsByName("yeari")[0].value + toD(document.getElementsByName("monthi")[0].value) + toD(document.getElementsByName("dayi")[0].value) + "\x0ADBG" + document.getElementsByName("internal")[0].value + "\x0ADBH" + document.getElementsByName("organ")[0].value;
+
 
         	PDF417.init(hub3_code);           	
 
