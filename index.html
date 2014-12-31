@@ -24,6 +24,7 @@
             var canvas = document.createElement('canvas');
             canvas.width = bw * barcode['num_cols'];
             canvas.height = bh * barcode['num_rows'];
+            document.getElementById('barcode').innerHTML = "";
             document.getElementById('barcode').appendChild(canvas);
 
             var ctx = canvas.getContext('2d');
